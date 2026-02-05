@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const footerSections = [
@@ -81,8 +82,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-stone-800 mt-12 pt-8 text-center">
+        <div className="border-t border-stone-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-stone-500 text-sm">© 2024 Taniti Island Tourism Board. All rights reserved.</p>
+          <Link to="/photo-credits" className="text-stone-500 text-sm hover:text-teal-400 transition-colors">
+            Photo Credits
+          </Link>
         </div>
       </div>
     </footer>

@@ -9,6 +9,7 @@ import ActivityDetail from './components/ActivityDetail';
 import Lodging from './components/Lodging';
 import LodgingDetail from './components/LodgingDetail';
 import { Dining, Transport, About } from './components/Pages';
+import PhotoCredits from './components/PhotoCredits';
 import './index.css';
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             <Route path="/dining" element={<Dining />} />
             <Route path="/transport" element={<Transport />} />
             <Route path="/about" element={<About />} />
+            <Route path="/photo-credits" element={<PhotoCredits />} />
           </Routes>
         </main>
         <Footer />

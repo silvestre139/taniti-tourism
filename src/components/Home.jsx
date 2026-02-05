@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { images, activities, lodgings } from '../data/siteData';
-import { ActivityCard, LodgingCard, SectionHeader, SafeImage } from './UI';
+import { ActivityCard, LodgingCard, SectionHeader, SafeImage, ImageCredit } from './UI';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -24,7 +24,7 @@ const Home = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-b from-stone-900/40 via-stone-900/20 to-stone-900/60"></div>
         </div>
-        
+
         <div className="relative z-10 h-full flex flex-col items-center justify-center text-white px-4">
           <span className="text-teal-300 tracking-[0.3em] uppercase text-sm mb-4 font-medium">Welcome to</span>
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-light mb-6 text-center">
@@ -54,6 +54,7 @@ const Home = () => {
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
+        <ImageCredit src={images.hero} position="overlay" className="z-20" />
       </div>
 
       {/* Categories Section */}
@@ -72,7 +73,8 @@ const Home = () => {
             >
               <SafeImage src={cat.image} alt={cat.name} className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/20 to-transparent"></div>
-              <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+              <ImageCredit src={cat.image} position="overlay" />
+              <div className="absolute bottom-6 left-0 right-0 p-4 md:p-6">
                 <h3 className="text-white font-serif font-medium text-lg md:text-xl">{cat.name}</h3>
               </div>
             </button>

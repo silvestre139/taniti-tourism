@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getImageCredit } from '../data/siteData';
 
 // Image Component with Error Handling
 export const SafeImage = ({ src, alt, className, fallback = null }) => {
@@ -81,6 +82,70 @@ export const SafeImage = ({ src, alt, className, fallback = null }) => {
   );
 };
 
+// Image Credit Component - displays credit text for an image
+// Can be used standalone or with SafeImage
+// position: 'below' (default), 'overlay' (positioned at bottom of parent)
+export const ImageCredit = ({ src, position = 'below', className = '' }) => {
+  const credit = getImageCredit(src);
+
+  if (!credit) return null;
+
+  if (position === 'overlay') {
+    return (
+      <div className={`absolute bottom-0 left-0 right-0 bg-black/50 px-2 py-1 ${className}`}>
+        <a
+          href={credit.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[10px] text-white/80 hover:text-white transition-colors truncate block"
+          title={credit.credits}
+          onClick={(e) => e.stopPropagation()}
+        >
+          Photo: {credit.credits.length > 50 ? credit.credits.substring(0, 50) + '...' : credit.credits}
+        </a>
+      </div>
+    );
+  }
+
+  return (
+    <div className={`text-xs text-stone-400 mt-1 ${className}`}>
+      <a
+        href={credit.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hover:text-teal-600 transition-colors"
+        title={credit.credits}
+      >
+        Photo: {credit.credits.length > 60 ? credit.credits.substring(0, 60) + '...' : credit.credits}
+      </a>
+    </div>
+  );
+};
+
+// Image with Credit Component - displays image with citation below
+export const ImageWithCredit = ({ src, alt, className, containerClassName = '', creditClassName = '', showCredit = true, fallback = null }) => {
+  const credit = getImageCredit(src);
+
+  return (
+    <div className={containerClassName}>
+      <SafeImage src={src} alt={alt} className={className} fallback={fallback} />
+      {showCredit && credit && (
+        <div className={`text-xs text-stone-400 mt-1 ${creditClassName}`}>
+          <a
+            href={credit.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-teal-600 transition-colors"
+            title={credit.credits}
+          >
+            Photo: {credit.credits.length > 60 ? credit.credits.substring(0, 60) + '...' : credit.credits}
+          </a>
+        </div>
+      )}
+    </div>
+  );
+};
+
 // Star Rating Component
 export const StarRating = ({ rating, showCount = false, count = 0 }) => (
   <div className="flex items-center gap-1.5">
@@ -119,6 +184,7 @@ export const ActivityCard = ({ activity, onClick }) => (
       <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-sm font-medium text-stone-700">
         {activity.duration}
       </div>
+      <ImageCredit src={activity.image} position="overlay" />
     </div>
     <div className="p-5">
       <h3 className="font-semibold text-lg text-stone-800 mb-2">{activity.name}</h3>
@@ -149,6 +215,7 @@ export const LodgingCard = ({ lodging, onClick }) => (
       <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-amber-700">
         {lodging.type}
       </div>
+      <ImageCredit src={lodging.image} position="overlay" />
     </div>
     <div className="p-5">
       <h3 className="font-semibold text-lg text-stone-800 mb-2">{lodging.name}</h3>

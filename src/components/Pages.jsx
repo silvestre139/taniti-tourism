@@ -1,6 +1,6 @@
 import React from 'react';
 import { restaurants, images } from '../data/siteData';
-import { PageHeader, StarRating, SafeImage } from './UI';
+import { PageHeader, StarRating, SafeImage, ImageCredit } from './UI';
 
 // Dining Page
 export const Dining = () => {
@@ -31,8 +31,9 @@ export const Dining = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {filteredRestaurants.map((restaurant) => (
             <div key={restaurant.id} className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-shadow">
-              <div className="h-44 overflow-hidden">
+              <div className="relative h-44 overflow-hidden">
                 <SafeImage src={restaurant.image} alt={restaurant.name} className="w-full h-full object-cover" />
+                <ImageCredit src={restaurant.image} position="overlay" />
               </div>
               <div className="p-5">
                 <div className="flex items-center gap-2 mb-3">
@@ -87,7 +88,8 @@ export const Transport = () => {
           <div className="relative rounded-2xl overflow-hidden h-64">
             <SafeImage src={images.aerial} alt="By Air" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/40 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <ImageCredit src={images.aerial} position="overlay" />
+            <div className="absolute bottom-8 left-0 right-0 p-6 text-white">
               <h3 className="text-xl font-semibold mb-2">By Air</h3>
               <p className="text-white/80 text-sm">Our airport accommodates small jets and propeller planes. Expansion underway for larger aircraft.</p>
               <span className="inline-block mt-3 text-xs bg-teal-500 px-3 py-1 rounded-full">Most Popular</span>
@@ -96,7 +98,8 @@ export const Transport = () => {
           <div className="relative rounded-2xl overflow-hidden h-64">
             <SafeImage src={images.beach} alt="By Cruise" className="absolute inset-0 w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 via-stone-900/40 to-transparent"></div>
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+            <ImageCredit src={images.beach} position="overlay" />
+            <div className="absolute bottom-8 left-0 right-0 p-6 text-white">
               <h3 className="text-xl font-semibold mb-2">By Cruise Ship</h3>
               <p className="text-white/80 text-sm">A cruise ship docks in Yellow Leaf Bay for one night per week.</p>
               <span className="inline-block mt-3 text-xs bg-amber-500 px-3 py-1 rounded-full">Weekly Service</span>
@@ -147,8 +150,9 @@ export const About = () => {
         <PageHeader label="Discover" title="About Taniti Island" />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div className="rounded-2xl overflow-hidden h-80">
+          <div className="relative rounded-2xl overflow-hidden h-80">
             <SafeImage src={images.hero} alt="Taniti Island" className="w-full h-full object-cover" />
+            <ImageCredit src={images.hero} position="overlay" />
           </div>
           <div>
             <h2 className="text-2xl font-semibold text-stone-800 mb-4">Island Overview</h2>

@@ -250,3 +250,83 @@ export const restaurants = [
 
 export const categories = ['All', 'Water Sports', 'Land Adventures', 'Cultural', 'Tours'];
 export const priceRanges = ['All', 'Under $50', '$50-100', '$100-200', '$200+'];
+
+// Image credits data - keyed by filename for easy lookup
+export const imageCredits = {
+  'hero.jpg': {
+    credits: 'Unsplash. (2019, May 29). Photo by Tom Winckels on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/green-trees-on-cliff-I7oLRdM9YIw'
+  },
+  'beach.jpg': {
+    credits: 'Unsplash. (2017, October 9). Photo by Sean Oulashin on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/seashore-during-golden-hour-KMn4VEeEPR8'
+  },
+  'volcano.jpg': {
+    credits: 'Unsplash. (2016, May 4). Photo by NASA on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/nebula--hI5dX2ObAs'
+  },
+  'rainforest.jpg': {
+    credits: 'Unsplash. (2015, November 24). Photo by Sebastian Unrau on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/trees-on-forest-with-sun-rays-sp-p7uuT0tw'
+  },
+  'culture.jpg': {
+    credits: 'Anasch, R. (2018, August 7). assorted-color filling book lot. Unsplash.com; Unsplash.',
+    url: 'https://unsplash.com/photos/assorted-color-filling-book-lot-McX3XuJRsUM'
+  },
+  'snorkeling.jpg': {
+    credits: 'Lambarri, S. P. (2018, December 11). two people scuba diving underwater. Unsplash.com; Unsplash.',
+    url: 'https://unsplash.com/photos/two-people-scuba-diving-underwater-7i5HMCGupVw'
+  },
+  'zipline.jpg': {
+    credits: 'Rune Haugseng. (2018, July 6). group of people kayaking on body of water. Unsplash.com; Unsplash.',
+    url: 'https://unsplash.com/photos/group-of-people-kayaking-on-body-of-water-qNe4XPYDnSY'
+  },
+  'resort.jpg': {
+    credits: 'Unsplash. (2019, October 24). Photo by Anmol Seth on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/blue-outdoor-pool-hDbCjHNdF48'
+  },
+  'hotel.jpg': {
+    credits: 'Unsplash. (2019, August 17). Photo by Edvin Johansson on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/person-in-swimming-pool-during-daytime-rlwE8f8anOc'
+  },
+  'restaurant.jpg': {
+    credits: 'Unsplash. (2018, January 29). Photo by Jason Leung on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/photo-of-pub-set-in-room-during-daytime-poI7DelFiVA'
+  },
+  'helicopter.jpg': {
+    credits: 'G, Y. (2018, October 31). white airliner on gray pavement. Unsplash.com; Unsplash.',
+    url: 'https://unsplash.com/photos/white-airliner-on-gray-pavement-Qhy9A3NQZAE'
+  },
+  'museum.jpg': {
+    credits: 'Unsplash. (2019, April 10). Photo by Andrew Neel on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/assorted-picture-frames-on-wall-acowe0pCVBg'
+  },
+  'aerial.jpg': {
+    credits: 'Parmly, R. (2015, July 10). aerial photography of airliner. Unsplash.com; Unsplash.',
+    url: 'https://unsplash.com/photos/aerial-photography-of-airliner-rf6ywHVkrlY'
+  },
+  'restaurant-seafood.jpg': {
+    credits: 'Unsplash. (2019, May 31). Photo by Albert on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/a-restaurant-with-a-view-of-the-water-YYZU0Lo1uXE'
+  },
+  'restaurant-american.jpg': {
+    credits: 'Shawn. (2019, April 16). brown and gray concrete store. Unsplash.com; Unsplash.',
+    url: 'https://unsplash.com/photos/brown-and-gray-concrete-store-nmpW_WwwVSc'
+  },
+  'restaurant-asian.jpg': {
+    credits: 'Unsplash. (2020, January 21). Photo by Derek Duran on Unsplash. Unsplash.com.',
+    url: 'https://unsplash.com/photos/sushi-on-white-ceramic-plate-Jz4QMhLvGgw'
+  },
+  'restaurant-beachside.jpg': {
+    credits: 'Welcome To Zscaler Directory Authentication. (2026). Unsplash.com.',
+    url: 'https://unsplash.com/photos/clear-drinking-glass-on-table-OFJGlG3sKik'
+  }
+};
+
+// Helper function to get credit info from image path
+export const getImageCredit = (imagePath) => {
+  if (!imagePath) return null;
+  // Extract filename from path (handles both /images/name.jpg and full URLs)
+  const filename = imagePath.split('/').pop();
+  return imageCredits[filename] || null;
+};

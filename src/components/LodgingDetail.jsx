@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { lodgings, practicalInfo } from '../data/siteData';
-import { StarRating, SafeImage } from './UI';
+import { StarRating, SafeImage, ImageCredit } from './UI';
 
 const LodgingDetail = () => {
   const { id } = useParams();
@@ -65,7 +65,7 @@ const LodgingDetail = () => {
             {/* Image Gallery */}
             <div className="relative rounded-2xl overflow-hidden h-72 md:h-96 mb-8">
               <SafeImage src={lodging.image} alt={lodging.name} className="w-full h-full object-cover" />
-              <div className="absolute bottom-4 right-4 flex gap-2">
+              <div className="absolute bottom-12 right-4 flex gap-2">
                 <button onClick={() => setGalleryIndex(i => Math.max(0, i - 1))} className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors shadow-lg">
                   <svg className="w-5 h-5 text-stone-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -77,9 +77,10 @@ const LodgingDetail = () => {
                   </svg>
                 </button>
               </div>
-              <div className="absolute bottom-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-stone-700">
+              <div className="absolute bottom-12 left-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-stone-700">
                 {galleryIndex + 1} / 6
               </div>
+              <ImageCredit src={lodging.image} position="overlay" />
             </div>
 
             <span className="text-xs font-medium text-teal-600 tracking-wider uppercase">{lodging.type}</span>
